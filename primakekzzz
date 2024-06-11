@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+void extract_square_roots(char *input_string) {
+    char *token = strtok(input_string, " ");
+    while(token != NULL) {
+        double num = atof(token);
+        double sqrt_num = sqrt(num);
+        printf("%.2f ", sqrt_num);
+        token = strtok(NULL, " ");
+    }
+    printf("\n");
+}
+
+int main() {
+    char input_string[100];
+    printf("Введите строку чисел, разделенных пробелами: ");
+    fgets(input_string, 100, stdin);
+
+    // Удаление символа новой строки, который добавляется функцией fgets
+    input_string[strcspn(input_string, "\n")] = 0;
+
+    extract_square_roots(input_string);
+
+    return 0;
+}
